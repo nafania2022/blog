@@ -1,0 +1,25 @@
+{% extends 'main_blog/base.html' %}
+
+
+{% block b1 %}
+<div class="container mt-5">
+    <div class=" row">
+        <div class=" col-5 offset-1">
+            <form action="" method = "post">  
+                {% csrf_token %}
+                <div class="row">
+                <label for="name">Name</label>
+                {{form.name}}
+                <label for="email">Email</label>
+                {{form.email}}
+                <label for="password">Password</label>
+                {{form.password}}
+                <label for="full_name">Full name</label>
+                {{form.full_name}}
+                <input type="submit" class="mt-2 btn btn-danger" name= "send" value ="Создать">
+                </div>                            
+            </form>
+        </div>                            
+    </div>                            
+</div>                            
+{% endblock  %}

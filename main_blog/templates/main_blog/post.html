@@ -1,0 +1,13 @@
+{% extends 'main_blog/base.html' %}
+
+
+{% block b1 %}
+
+<div class="px-4 py-5 my-5 text-center">
+    <h4 class="display-5 fw-bold">{{post.title}}</h4>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">{{post.text}}</p>      
+    </div>
+  </div>
+
+{% endblock  %}
