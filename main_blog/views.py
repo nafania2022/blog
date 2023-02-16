@@ -26,15 +26,17 @@ def post(request, id_post):
     return render(request, 'main_blog/post.html', context=context)
 
 def create(request):
-    form = UserForm()
+    
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():   
+            form.save()
+            return redirect('home')
+    
+    else:
+        form = UserForm()
     context = {
         'title': "Регистрация",
         'form': form
                }
-    if request.method == 'POST':
-        form = UserForm(request.POST)
-        if form.is_valid():           
-            User.objects.create(**form.cleaned_data)
-    else:
-        form = UserForm()
-        return render(request, "main_blog/create.html", context=context)
+    return render(request, "main_blog/create.html", context=context)

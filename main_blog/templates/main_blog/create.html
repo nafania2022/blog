@@ -12,6 +12,13 @@
                 {{form.name}}
                 <label for="email">Email</label>
                 {{form.email}}
+                {% if  form.errors%}
+                <div class="alert alert-danger" role="alert">
+                    <strong>{{form.non_field_errors}}</strong> 
+                </div>    
+                    
+                {% endif %}
+                    
                 <label for="password">Password</label>
                 {{form.password}}
                 <label for="full_name">Full name</label>

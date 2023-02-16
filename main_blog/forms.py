@@ -1,6 +1,6 @@
 from .models import *
 from django.forms import ModelForm, TextInput
-
+from django.core.exceptions import ValidationError
 class UserForm(ModelForm):
     class Meta:
         model = User
@@ -12,5 +12,14 @@ class UserForm(ModelForm):
             "full_name": TextInput(attrs={'class': 'form-control', 'placeholder':'Введите Ф.И.О'}),
                    
                    }
+        
+     
+    def clean(self):
+        data = self.cleaned_data['email']
+        if User.objects.filter(email=data).exists():
+            raise ValidationError("Эта почта уже зарегестрированна")
+        return data
+        
+        
    
   
